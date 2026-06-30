@@ -95,6 +95,18 @@ window.GameHelpers = (function () {
      */
     function guideBarHTML(sprite, text, id) {
         id = id || 'gh-guide-text';
+        
+        // 自动触发语音播放
+        if (window.VoicePlayer) {
+            setTimeout(() => {
+                // 检查屏幕上的文本是否已被后续逻辑动态更新。如果是，则不播报过时的初始模板文本
+                const el = document.getElementById(id);
+                if (el && el.textContent === text) {
+                    window.VoicePlayer.play(text);
+                }
+            }, 600); // 延时600ms播放，确保DOM渲染已完成
+        }
+        
         return `
             <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);
                 background:rgba(255,255,255,0.9);padding:10px 40px;border-radius:40px;
@@ -117,6 +129,11 @@ window.GameHelpers = (function () {
         id = id || 'gh-guide-text';
         const el = document.getElementById(id);
         if (el) el.textContent = text;
+        
+        // 自动播报更新后的引导语音
+        if (window.VoicePlayer) {
+            window.VoicePlayer.play(text);
+        }
     }
 
     /**
@@ -136,6 +153,11 @@ window.GameHelpers = (function () {
         tip.style.top = (rect.top - cRect.top - 50) + 'px';
         container.appendChild(tip);
         setTimeout(() => tip.remove(), 2000);
+        
+        // 自动播放错误提示语音
+        if (window.VoicePlayer) {
+            window.VoicePlayer.play(msg);
+        }
     }
 
     /**
@@ -191,6 +213,16 @@ window.GameHelpers = (function () {
         const stars = onComplete(levelData, mistakes, nextId);
         const starsStr = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
         const titleText = stars === 3 ? '完美通关！' : stars === 2 ? '闯关成功！' : '勉强通过！';
+
+        // 自动播放结算语音
+        if (window.VoicePlayer) {
+            window.VoicePlayer.play(titleText).then(() => {
+                const sub = subtitle || '你完成得很棒！';
+                setTimeout(() => {
+                    window.VoicePlayer.play(sub);
+                }, 400); // 间隔 400ms 后播放副标题，体验更连贯
+            });
+        }
 
         const overlay = document.createElement('div');
         overlay.className = 'gh-settlement';

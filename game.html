@@ -223,6 +223,10 @@
         </div>
         <div class="nav-center" id="level-name">加载关卡中...</div>
         <div class="nav-right">
+            <!-- 语音播放控制按钮 -->
+            <button id="voice-toggle-btn" class="btn-back" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                加载中...
+            </button>
             <div class="coin-display">
                 <span class="coin-icon">💰</span>
                 <span id="coin-count">0</span>
@@ -249,8 +253,9 @@
         </div>
     </main>
 
-    <!-- 引入全局状态管理器 -->
+    <!-- 引入全局状态、语音播放与工具集 -->
     <script src="./src/core/stateManager.js"></script>
+    <script src="./src/core/voicePlayer.js"></script>
     <script src="./src/games/common/gameHelpers.js"></script>
 
     <script>
@@ -391,6 +396,27 @@
                             if (!window.CurrentGameModule) {
                                 throw new Error("模块加载不完整：window.CurrentGameModule 未定义");
                             }
+
+                            // 动态劫持游戏模块的 updateGuide 和 triggerError，使其自动触发语音播报
+                            if (window.CurrentGameModule.updateGuide && typeof window.CurrentGameModule.updateGuide === 'function') {
+                                const originalUpdateGuide = window.CurrentGameModule.updateGuide;
+                                window.CurrentGameModule.updateGuide = function(t) {
+                                    originalUpdateGuide.call(this, t);
+                                    if (window.VoicePlayer) {
+                                        window.VoicePlayer.play(t);
+                                    }
+                                };
+                            }
+                            if (window.CurrentGameModule.triggerError && typeof window.CurrentGameModule.triggerError === 'function') {
+                                const originalTriggerError = window.CurrentGameModule.triggerError;
+                                window.CurrentGameModule.triggerError = function(m) {
+                                    originalTriggerError.call(this, m);
+                                    if (window.VoicePlayer) {
+                                        window.VoicePlayer.play(m);
+                                    }
+                                };
+                            }
+
                             if (typeof window.CurrentGameModule.init !== 'function') {
                                 throw new Error("模块缺少 init 接口");
                             }
