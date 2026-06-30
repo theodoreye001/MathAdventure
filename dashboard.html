@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家长控制台 - 数学大冒险</title>
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --radius: 16px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 侧边栏 */
+        aside {
+            width: 260px;
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-muted);
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            font-weight: 600;
+        }
+
+        .btn-back {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1.5rem;
+        }
+
+        .btn-back:hover {
+            color: var(--danger);
+        }
+
+        /* 主内容区 */
+        main {
+            flex-grow: 1;
+            margin-left: 260px;
+            padding: 2rem 3rem;
+            max-width: 1200px;
+        }
+
+        header {
+            margin-bottom: 2.5rem;
+        }
+
+        header h1 {
+            font-size: 1.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+        }
+
+        /* 数据概览卡片 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .stat-card.coins { border-left: 4px solid var(--warning); }
+        .stat-card.levels { border-left: 4px solid var(--success); }
+        .stat-card.errors { border-left: 4px solid var(--danger); }
+
+        /* 内容网格 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        /* 错题列表 */
+        .error-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .error-item {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.2s;
+        }
+
+        .error-item:last-child { border-bottom: none; }
+
+        .error-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .error-question {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .error-answers {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        .wrong { color: var(--danger); text-decoration: line-through; }
+        .correct { color: var(--success); font-weight: 600; }
+
+        .btn-clear {
+            background: #fee2e2;
+            color: var(--danger);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-clear:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            aside { width: 80px; padding: 1.5rem 0.5rem; }
+            .logo span, .nav-links span, .btn-back span { display: none; }
+            main { margin-left: 80px; }
+            .content-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            <span>数学大冒险</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span>数据概览</span>
+            </a></li>
+        </ul>
+        <a href="index.html" class="btn-back">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            <span>返回大厅</span>
+        </a>
+    </aside>
+
+    <main>
+        <header>
+            <h1>家长控制台</h1>
+            <p>实时跟踪孩子的学习进度与薄弱点</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card coins">
+                <span class="stat-label">累计获得金币</span>
+                <span class="stat-value" id="total-coins">0</span>
+            </div>
+            <div class="stat-card levels">
+                <span class="stat-label">已通关数量</span>
+                <span class="stat-value" id="unlocked-count">0</span>
+            </div>
+            <div class="stat-card errors">
+                <span class="stat-label">累计错题数</span>
+                <span class="stat-value" id="error-count">0</span>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- 熟练度雷达图 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">知识点掌握分布</span>
+                </div>
+                <div style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                    <canvas id="masteryChart"></canvas>
+                    <div id="no-mastery-data" class="empty-state" style="display: none;">
+                        暂无数据，快去让孩子挑战吧！
+                    </div>
+                </div>
+            </div>
+
+            <!-- 错题本 -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">错题回顾</span>
+                    <button class="btn-clear" onclick="handleClearErrors()">清空错题</button>
+                </div>
+                <div class="error-list" id="error-list-container">
+                    <!-- 动态渲染 -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./src/core/stateManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDashboard();
+        });
+
+        function renderDashboard() {
+            const manager = window.GameManager;
+            const state = manager.state;
+
+            // 1. 基础数据
+            document.getElementById('total-coins').textContent = state.coins.toLocaleString();
+            document.getElementById('unlocked-count').textContent = state.unlockedLevels.length;
+            document.getElementById('error-count').textContent = state.errorLog.length;
+
+            // 2. 渲染雷达图
+            renderMasteryChart(state.mastery);
+
+            // 3. 渲染错题列表
+            renderErrorLog(state.errorLog);
+        }
+
+        function renderMasteryChart(mastery) {
+            const ctx = document.getElementById('masteryChart').getContext('2d');
+            const keys = Object.keys(mastery);
+            const values = Object.values(mastery);
+
+            if (keys.length === 0) {
+                document.getElementById('masteryChart').style.display = 'none';
+                document.getElementById('no-mastery-data').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('masteryChart').style.display = 'block';
+            document.getElementById('no-mastery-data').style.display = 'none';
+
+            if (window.myRadarChart) window.myRadarChart.destroy();
+
+            window.myRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: keys,
+                    datasets: [{
+                        label: '掌握程度',
+                        data: values,
+                        fill: true,
+                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                        borderColor: 'rgb(99, 102, 241)',
+                        pointBackgroundColor: 'rgb(99, 102, 241)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(99, 102, 241)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            angleLines: { display: false },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: { stepSize: 20 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function renderErrorLog(log) {
+            const container = document.getElementById('error-list-container');
+            if (!log || log.length === 0) {
+                container.innerHTML = '<div class="empty-state">暂无错题记录，孩子表现得太棒了！</div>';
+                return;
+            }
+
+            container.innerHTML = log.map(item => {
+                const date = new Date(item.date).toLocaleString('zh-CN', {
+                    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
+                return `
+                    <div class="error-item">
+                        <div class="error-meta">
+                            <span>关卡 ID: ${item.levelId}</span>
+                            <span>${date}</span>
+                        </div>
+                        <div class="error-question">${item.question}</div>
+                        <div class="error-answers">
+                            <span>孩子写了: <span class="wrong">${item.wrongAnswer}</span></span>
+                            <span>正确答案: <span class="correct">${item.correctAnswer}</span></span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handleClearErrors() {
+            if (confirm('确定要清空所有错题记录吗？此操作不可撤销。')) {
+                window.GameManager.clearErrors();
+                renderDashboard();
+            }
+        }
+    </script>
+</body>
+</html>

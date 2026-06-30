@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数学大冒险 - 游戏大厅</title>
+  <style>
+    /* --- 全局样式与变量定义 --- */
+    :root {
+      --primary-color: #4ade80; 
+      --secondary-color: #60a5fa; 
+      --accent-color: #f87171; 
+      --bg-color: #f0f9ff; 
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --locked-color: #cbd5e1;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    header { text-align: center; margin-bottom: 30px; }
+    h1 {
+      font-size: 3rem;
+      color: var(--secondary-color);
+      text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(0,0,0,0.05);
+      margin-bottom: 10px;
+    }
+    .version-tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      vertical-align: middle;
+    }
+
+    /* 导航条优化：增加高亮状态 */
+    .grade-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid var(--secondary-color);
+      color: var(--secondary-color);
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(4px);
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--secondary-color);
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgba(96, 165, 250, 0.3);
+    }
+
+    /* 层级样式 */
+    .grade-section { margin-bottom: 100px; scroll-margin-top: 100px; }
+    .grade-title {
+      font-size: 1.8rem;
+      background: white;
+      display: inline-block;
+      padding: 10px 30px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      color: var(--text-main);
+      border-left: 8px solid var(--accent-color);
+    }
+    .world-container { margin-left: 20px; padding-left: 20px; border-left: 4px dashed #cbd5e1; }
+    .world-title { font-size: 1.4rem; color: var(--secondary-color); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .unit-section { margin-bottom: 40px; }
+    .unit-title { font-size: 1.1rem; color: var(--text-muted); margin: 20px 0 15px 0; display: flex; align-items: center; }
+    .unit-title::before { content: "⭐"; margin-right: 8px; }
+
+    /* 关卡卡片增强：增加图标占位符 */
+    .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+    .level-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 3px solid transparent;
+      overflow: hidden;
+    }
+    .level-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1); }
+    .level-card.unlocked { border-color: #dcfce7; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+    .level-card.locked { filter: grayscale(1); opacity: 0.7; background: #f8fafc; cursor: not-allowed; }
+
+    /* 图标占位符 */
+    .level-icon {
+      width: 50px;
+      height: 50px;
+      background: #f1f5f9;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+    }
+    .unlocked .level-icon { background: #dbeafe; color: var(--secondary-color); }
+
+    .level-name { font-size: 1.25rem; font-weight: bold; margin-bottom: 8px; }
+    .knowledge-point { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; }
+    
+    .dialogue-bubble {
+      background: #eff6ff; border-radius: 12px; padding: 12px; font-size: 0.85rem;
+      color: var(--secondary-color); margin-bottom: 20px; position: relative; border: 1px solid #dbeafe;
+    }
+    .dialogue-bubble::after {
+      content: ""; position: absolute; bottom: -10px; left: 20px;
+      border-width: 10px 10px 0; border-style: solid; border-color: #eff6ff transparent transparent;
+    }
+
+    .btn-start {
+      width: 100%; padding: 12px; border: none; border-radius: 12px; font-size: 1rem;
+      font-weight: bold; cursor: pointer; transition: all 0.2s; background: var(--primary-color);
+      color: white; margin-top: auto;
+    }
+    .btn-start:hover { filter: brightness(1.05); transform: scale(1.02); }
+    .btn-start:disabled { background: var(--locked-color); cursor: not-allowed; }
+
+    #error-message { text-align: center; padding: 100px 20px; color: #ef4444; display: none; }
+    #loading { text-align: center; padding: 100px; font-size: 1.5rem; color: var(--secondary-color); }
+
+    /* 调试与星星样式 */
+    .debug-btn {
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s;
+    }
+    .debug-btn:hover { background: #e2e8f0; color: #64748b; border-color: #94a3b8; }
+    
+    .stars {
+        color: #fbbf24;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1 id="game-title">数学大冒险 <span class="version-tag" id="game-version">v1.0.0</span></h1>
+      <button class="debug-btn" onclick="debugUnlockAll()">🛠️ 【调试】一键解锁所有关卡</button>
+      <nav id="grade-nav" class="grade-nav">
+        <a href="dashboard.html" class="nav-btn">📊 家长控制台</a>
+      </nav>
+    </header>
+
+    <div id="loading">✨ 正在召唤数字精灵...</div>
+    <div id="error-message">哎呀，地图数据走丢了，请确保使用 Live Server 打开哦！</div>
+    <main id="lobby-main"></main>
+  </div>
+
+  <script src="./src/core/stateManager.js"></script>
+  <script>
+    /**
+     * 大厅渲染逻辑
+     */
+    async function initLobby() {
+      // 检查 GameManager 是否就绪
+      if (!window.GameManager) {
+        console.error("GameManager 未就绪，请检查脚本引入顺序！");
+        return;
+      }
+
+      const main = document.getElementById('lobby-main');
+      const nav = document.getElementById('grade-nav');
+      
+      // 用于收集所有关卡ID，供调试模式使用
+      window.allLevelIds = [];
+      window.isDataLoaded = false; // 新增状态标记
+
+      try {
+        const response = await fetch('./data/levels.json');
+        if (!response.ok) throw new Error('网络响应不正常');
+        const data = await response.json();
+        
+        document.getElementById('game-title').firstChild.textContent = data.gameName + ' ';
+        document.getElementById('game-version').textContent = data.version;
+        document.getElementById('loading').style.display = 'none';
+
+        data.grades.forEach(grade => {
+          const hasLevels = grade.worlds.some(w => w.units.some(u => u.levels.length > 0));
+          if (!hasLevels) return;
+
+          // 创建导航按钮
+          const navBtn = document.createElement('a');
+          navBtn.className = 'nav-btn';
+          navBtn.href = `#grade-${grade.gradeId}`;
+          navBtn.textContent = grade.gradeName;
+          nav.appendChild(navBtn);
+
+          // 创建年级板块
+          const section = document.createElement('section');
+          section.className = 'grade-section';
+          section.id = `grade-${grade.gradeId}`;
+          section.innerHTML = `<h2 class="grade-title">${grade.gradeName}</h2>`;
+
+          const worldContainer = document.createElement('div');
+          worldContainer.className = 'world-container';
+
+          grade.worlds.forEach(world => {
+            if (!world.units.some(u => u.levels.length > 0)) return;
+
+            const worldEl = document.createElement('div');
+            worldEl.innerHTML = `<h3 class="world-title">🌍 ${world.worldTitle} (${world.term})</h3>`;
+
+            world.units.forEach(unit => {
+              if (!unit.levels || unit.levels.length === 0) return;
+
+              const unitSection = document.createElement('div');
+              unitSection.className = 'unit-section';
+              unitSection.innerHTML = `<h4 class="unit-title">${unit.unitTitle}</h4>`;
+
+              const grid = document.createElement('div');
+              grid.className = 'levels-grid';
+
+              unit.levels.forEach(level => {
+                // 收集 ID
+                window.allLevelIds.push(level.levelId);
+
+                // 使用全局 GameManager 判断解锁状态
+                const isUnlocked = window.GameManager.isLevelUnlocked(level.levelId);
+                
+                // 获取星星纪录
+                const record = window.GameManager.state.levelRecords[level.levelId];
+                const starsCount = record ? record.stars : 0;
+                const starsHtml = starsCount > 0 ? `<div class="stars">${'⭐'.repeat(starsCount)}</div>` : '';
+
+                const card = document.createElement('div');
+                card.className = `level-card ${isUnlocked ? 'unlocked' : 'locked'}`;
+                
+                const dialogue = level.npcDialogue || level.description;
+                
+                card.innerHTML = `
+                  <div class="level-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </div>
+                  <div class="level-name">${level.levelName}</div>
+                  <div class="knowledge-point">${level.knowledgePoint}</div>
+                  ${starsHtml}
+                  ${dialogue ? `<div class="dialogue-bubble">${dialogue}</div>` : ''}
+                  <button class="btn-start" ${isUnlocked ? '' : 'disabled'}>
+                    ${isUnlocked ? '开始挑战' : '未解锁'}
+                  </button>
+                `;
+
+                if (isUnlocked) {
+                  card.querySelector('.btn-start').addEventListener('click', () => {
+                    window.location.href = 'game.html?id=' + level.levelId;
+                  });
+                }
+
+                grid.appendChild(card);
+              });
+
+              unitSection.appendChild(grid);
+              worldEl.appendChild(unitSection);
+            });
+            worldContainer.appendChild(worldEl);
+          });
+
+          section.appendChild(worldContainer);
+          main.appendChild(section);
+          observer.observe(section);
+        });
+
+        window.isDataLoaded = true; // 标记加载成功
+
+      } catch (e) {
+        console.error('加载失败:', e);
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error-message').style.display = 'block';
+        window.dataLoadError = e.message; // 记录错误原因
+      }
+    }
+
+    /**
+     * 【调试捷径】一键解锁所有关卡
+     */
+    function debugUnlockAll() {
+      if (!window.isDataLoaded) {
+          const reason = window.dataLoadError ? `\n(错误原因: ${window.dataLoadError})` : "\n(数据可能还在加载中，请稍候)";
+          alert("尚未加载关卡数据，无法解锁。" + reason);
+          return;
+      }
+      if (confirm("确定要解锁所有关卡吗？")) {
+          window.allLevelIds.forEach(id => window.GameManager.unlockLevel(id));
+          alert("所有关卡已解锁！");
+          location.reload();
+      }
+    }
+
+    /**
+     * 滚动高亮逻辑
+     */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    window.addEventListener('DOMContentLoaded', initLobby);
+  </script>
+</body>
+</html>

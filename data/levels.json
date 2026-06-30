@@ -1,0 +1,1536 @@
+{
+  "gameName": "数学大冒险",
+  "version": "1.0.0",
+  "grades": [
+    {
+      "gradeId": "g1",
+      "gradeName": "一年级",
+      "worlds": [
+        {
+          "worldId": "g1_up",
+          "term": "上册",
+          "worldTitle": "数字谷的觉醒",
+          "units": [
+            {
+              "unitId": "u1_1_up",
+              "unitTitle": "准备课：数一数",
+              "levels": [
+                {
+                  "levelId": "lvl_1_1_1",
+                  "levelName": "数字谷的入口",
+                  "knowledgePoint": "1~10的点数与比多少",
+                  "description": "欢迎来到数字谷！大门上有10个数字宝石凹槽，按顺序数数并点击物品，点亮宝石大门吧！",
+                  "gameType": "g1_u1_counting",
+                  "isUnlocked": true,
+                  "reward": 10
+                }
+              ]
+            },
+            {
+              "unitId": "u1_2_up",
+              "unitTitle": "第二单元：位置",
+              "levels": [
+                {
+                  "levelId": "lvl_1_2_1",
+                  "levelName": "松鼠树屋的秘密",
+                  "knowledgePoint": "上下前后与左右方位",
+                  "description": "小精灵在树屋里捉迷藏，快来根据位置指令找到它吧！",
+                  "gameType": "g1_u2_position",
+                  "isUnlocked": true,
+                  "reward": 15
+                }
+              ]
+            },
+            {
+              "unitId": "u1_3_up",
+              "unitTitle": "第三单元：1~5的认识和加减法",
+              "levels": [
+                {
+                  "levelId": "lvl_1_3_1",
+                  "levelName": "石阵迷宫的考验",
+                  "knowledgePoint": "5以内加减法与0的认识",
+                  "description": "进入石阵迷宫，通过跳跃和比大小来解开谜题吧！",
+                  "gameType": "g1_u3_numbers5",
+                  "isUnlocked": true,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u1_4_up",
+              "unitTitle": "第四单元：认识图形",
+              "levels": [
+                {
+                  "levelId": "lvl_1_4_1",
+                  "levelName": "山洞形状仓库",
+                  "knowledgePoint": "长方体、正方体、圆柱与球",
+                  "description": "帮图形龟整理仓库，把散落的物品放回正确的形状箱子里吧！",
+                  "gameType": "g1_u4_shapes3d",
+                  "isUnlocked": true,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u1_5_up",
+              "unitTitle": "第五单元：6~10的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_1_5_1",
+                  "levelName": "数字森林的秘密",
+                  "knowledgePoint": "6-10的认识与一图四式",
+                  "description": "进入森林深处，学习 6-10 的数字魔法，解开一图四式的奥秘！",
+                  "gameType": "g1_u5_numbers10",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u1_6_up",
+              "unitTitle": "第六单元：11~20各数的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_1_6_1",
+                  "levelName": "数位城堡的钥匙",
+                  "knowledgePoint": "11-20的数位(个位、十位)认识",
+                  "description": "在城堡里探索数位的秘密，分清个位和十位，掌握 11-20 的规律！",
+                  "gameType": "g1_u6_place_value",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u1_7_up",
+              "unitTitle": "第七单元：认识钟表",
+              "levels": [
+                {
+                  "levelId": "lvl_1_7_1",
+                  "levelName": "时间老人的礼物",
+                  "knowledgePoint": "认识钟表(整时与半时)",
+                  "description": "时间老人的钟表坏了，快来帮他拨正指针，认识整时和半时吧！",
+                  "gameType": "g1_u7_clock",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u1_8_up",
+              "unitTitle": "第八单元：20以内的进位加法",
+              "levels": [
+                {
+                  "levelId": "lvl_1_8_1",
+                  "levelName": "终极凑十法",
+                  "knowledgePoint": "20以内的进位加法(凑十法正式版)",
+                  "description": "挑战终极进位加法，灵活运用凑十法解决复杂的数学难题！",
+                  "gameType": "g1_u8_make10_pro",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g1_down",
+          "term": "下册",
+          "worldTitle": "数字谷的复苏",
+          "units": [
+            {
+              "unitId": "u1_1_down",
+              "unitTitle": "第一单元：认识图形（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_1",
+                  "levelName": "图形寻宝",
+                  "knowledgePoint": "平面图形(长方形、正方形、平行四边形、三角形、圆)",
+                  "description": "帮助图形精灵把散落的平面图形送回正确的家吧！",
+                  "gameType": "g1_d_u1_shapes2d",
+                  "isUnlocked": false,
+                  "reward": 15
+                }
+              ]
+            },
+            {
+              "unitId": "u1_2_down",
+              "unitTitle": "第二单元：20以内的退位减法",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_2",
+                  "levelName": "破十过关",
+                  "knowledgePoint": "20以内的退位减法(破十法)",
+                  "description": "学会破十法，拆分数字来解决退位减法难题！",
+                  "gameType": "g1_d_u2_sub20",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u1_3_down",
+              "unitTitle": "第三单元：分类与整理",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_3",
+                  "levelName": "统计侦探",
+                  "knowledgePoint": "按属性分类与简单统计",
+                  "description": "成为统计侦探，把混在一起的物品分类整理，回答统计问题！",
+                  "gameType": "g1_d_u3_classify",
+                  "isUnlocked": false,
+                  "reward": 15
+                }
+              ]
+            },
+            {
+              "unitId": "u1_4_down",
+              "unitTitle": "第四单元：100以内数的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_4",
+                  "levelName": "数字阶梯",
+                  "knowledgePoint": "100以内数的认识(数数、读写、数位、比大小)",
+                  "description": "攀登数字阶梯，掌握100以内数的奥秘！",
+                  "gameType": "g1_d_u4_numbers100",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u1_5_down",
+              "unitTitle": "第五单元：认识人民币",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_5",
+                  "levelName": "购物小达人",
+                  "knowledgePoint": "人民币(元角分)的认识与简单换算",
+                  "description": "在魔法商店里学习人民币，成为购物小达人！",
+                  "gameType": "g1_d_u5_money",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u1_6_down",
+              "unitTitle": "第六单元：100以内的加法和减法（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_6",
+                  "levelName": "口算大冒险",
+                  "knowledgePoint": "100以内加减法(两位数±一位数/整十数)",
+                  "description": "挑战口算大冒险，成为心算小达人！",
+                  "gameType": "g1_d_u6_addsub100",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u1_7_down",
+              "unitTitle": "第七单元：找规律",
+              "levels": [
+                {
+                  "levelId": "lvl_1_d_7",
+                  "levelName": "规律接龙",
+                  "knowledgePoint": "图形规律与数字规律(重复、递增递减)",
+                  "description": "发现隐藏的规律，完成图形和数字接龙挑战！",
+                  "gameType": "g1_d_u7_patterns",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gradeId": "g2",
+      "gradeName": "二年级",
+      "worlds": [
+        {
+          "worldId": "g2_up",
+          "term": "上册",
+          "worldTitle": "乘法森林的挑战",
+          "units": [
+            {
+              "unitId": "u2_1_up",
+              "unitTitle": "第一单元：长度单位",
+              "levels": [
+                {
+                  "levelId": "lvl_2_1_1",
+                  "levelName": "测量迷宫",
+                  "knowledgePoint": "长度单位(厘米cm、米m及换算)",
+                  "description": "学会用尺子测量物体长度，掌握厘米和米的换算！",
+                  "gameType": "g2_u1_length",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_2_up",
+              "unitTitle": "第二单元：100以内的加法和减法（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_2_1",
+                  "levelName": "笔算城堡",
+                  "knowledgePoint": "100以内笔算加减法(竖式、连加连减)",
+                  "description": "进入笔算城堡，用竖式计算解开城门上的密码！",
+                  "gameType": "g2_u2_written_calc",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_3_up",
+              "unitTitle": "第三单元：角的初步认识",
+              "levels": [
+                {
+                  "levelId": "lvl_2_3_1",
+                  "levelName": "角之猎人",
+                  "knowledgePoint": "角的认识(顶点、边、直角、锐角、钝角)",
+                  "description": "成为角之猎人，学会辨认直角、锐角和钝角！",
+                  "gameType": "g2_u3_angles",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_4_up",
+              "unitTitle": "第四单元：表内乘法（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_4_1",
+                  "levelName": "倍数果园的秘密",
+                  "knowledgePoint": "2~6的乘法口诀及应用",
+                  "description": "乘法森林里的果实熟了，根据口诀选出正确答案吧！",
+                  "gameType": "g2_u4_multiply",
+                  "isUnlocked": true,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u2_5_up",
+              "unitTitle": "第五单元：观察物体（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_5_1",
+                  "levelName": "透视大师",
+                  "knowledgePoint": "从不同方向观察立体图形",
+                  "description": "成为透视大师，从前后左右观察物体的不同面貌！",
+                  "gameType": "g2_u5_observe",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_6_up",
+              "unitTitle": "第六单元：表内乘法（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_6_1",
+                  "levelName": "口诀射箭",
+                  "knowledgePoint": "7~9的乘法口诀",
+                  "description": "用口诀射箭挑战靶心，掌握7~9的乘法口诀！",
+                  "gameType": "g2_u6_multiply79",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u2_7_up",
+              "unitTitle": "第七单元：认识时间",
+              "levels": [
+                {
+                  "levelId": "lvl_2_7_1",
+                  "levelName": "时间旅行",
+                  "knowledgePoint": "时、分的认识与时间推算",
+                  "description": "踏上时间旅行，学会读时钟、算时间！",
+                  "gameType": "g2_u7_time_hm",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_8_up",
+              "unitTitle": "第八单元：数学广角——搭配（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_8_1",
+                  "levelName": "搭配魔法",
+                  "knowledgePoint": "简单排列与组合",
+                  "description": "学习搭配魔法，找出所有可能的排列组合！",
+                  "gameType": "g2_u8_combo",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g2_down",
+          "term": "下册",
+          "worldTitle": "除法荒野的试炼",
+          "units": [
+            {
+              "unitId": "u2_1_down",
+              "unitTitle": "第一单元：数据收集整理",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_1",
+                  "levelName": "统计侦探",
+                  "knowledgePoint": "数据收集整理(正字统计、统计表)",
+                  "description": "用正字统计法收集数据，成为统计小侦探！",
+                  "gameType": "g2_d_u1_data",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_2_down",
+              "unitTitle": "第二单元：表内除法（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_2",
+                  "levelName": "分宝大师",
+                  "knowledgePoint": "平均分与除法意义(2~6口诀求商)",
+                  "description": "学会平均分物品，用除法口诀来分宝吧！",
+                  "gameType": "g2_d_u2_divide",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_3_down",
+              "unitTitle": "第三单元：图形的运动（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_3",
+                  "levelName": "魔法门",
+                  "knowledgePoint": "轴对称、平移与旋转",
+                  "description": "通过魔法门的考验，学会辨认对称、平移和旋转！",
+                  "gameType": "g2_d_u3_motion",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_4_down",
+              "unitTitle": "第四单元：表内除法（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_4",
+                  "levelName": "口诀求商",
+                  "knowledgePoint": "7~9口诀求商及应用",
+                  "description": "用7~9的乘法口诀来求商，解决实际问题！",
+                  "gameType": "g2_d_u4_divide2",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_5_down",
+              "unitTitle": "第五单元：混合运算",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_5",
+                  "levelName": "运算迷宫",
+                  "knowledgePoint": "混合运算顺序(先乘除后加减、括号优先)",
+                  "description": "掌握运算顺序规则，闯过运算迷宫！",
+                  "gameType": "g2_d_u5_mixed_ops",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_6_down",
+              "unitTitle": "第六单元：有余数的除法",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_6",
+                  "levelName": "余数密码",
+                  "knowledgePoint": "有余数的除法(余数<除数)",
+                  "description": "学习有余数的除法，破解余数密码！",
+                  "gameType": "g2_d_u6_remainder",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_7_down",
+              "unitTitle": "第七单元：万以内数的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_7",
+                  "levelName": "数位塔楼",
+                  "knowledgePoint": "万以内数的认识(数位、组成、比大小)",
+                  "description": "登上数位塔楼，认识万以内的大数！",
+                  "gameType": "g2_d_u7_big_nums",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u2_8_down",
+              "unitTitle": "第八单元：克和千克",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_8",
+                  "levelName": "称重小能手",
+                  "knowledgePoint": "质量单位(克g、千克kg及换算)",
+                  "description": "学习克和千克，成为称重小能手！",
+                  "gameType": "g2_d_u8_weight",
+                  "isUnlocked": false,
+                  "reward": 20
+                }
+              ]
+            },
+            {
+              "unitId": "u2_9_down",
+              "unitTitle": "第九单元：数学广角——推理",
+              "levels": [
+                {
+                  "levelId": "lvl_2_d_9",
+                  "levelName": "逻辑侦探",
+                  "knowledgePoint": "简单逻辑推理(猜图形、猜数字)",
+                  "description": "成为逻辑侦探，用推理解决数学谜题！",
+                  "gameType": "g2_d_u9_logic",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gradeId": "g3",
+      "gradeName": "三年级",
+      "worlds": [
+        {
+          "worldId": "g3_up",
+          "term": "上册",
+          "worldTitle": "时间王国的试炼",
+          "units": [
+            {
+              "unitId": "u3_1_up",
+              "unitTitle": "第一单元：时、分、秒",
+              "levels": [
+                {
+                  "levelId": "lvl_3_1_1",
+                  "levelName": "秒针竞速",
+                  "knowledgePoint": "秒的认识及时间换算(1分=60秒)",
+                  "description": "学习秒的知识，挑战时间换算竞速！",
+                  "gameType": "g3_u1_time_sec",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_2_up",
+              "unitTitle": "第二单元：万以内的加法和减法（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_3_2_1",
+                  "levelName": "口算闪电战",
+                  "knowledgePoint": "两位数加减两位数口算、几百几十加减",
+                  "description": "口算闪电战，两位数加减快速心算！",
+                  "gameType": "g3_u2_addsub_large",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_3_up",
+              "unitTitle": "第三单元：测量",
+              "levels": [
+                {
+                  "levelId": "lvl_3_3_1",
+                  "levelName": "单位换算转盘",
+                  "knowledgePoint": "毫米、分米、千米、吨及单位换算",
+                  "description": "转一转换一换，掌握所有长度和质量单位！",
+                  "gameType": "g3_u3_measurement",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u3_4_up",
+              "unitTitle": "第四单元：万以内的加法和减法（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_3_4_1",
+                  "levelName": "竖式闯关",
+                  "knowledgePoint": "三位数加减笔算(进退位、验算)",
+                  "description": "挑战三位数竖式计算，学会验算！",
+                  "gameType": "g3_u4_addsub_large2",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u3_5_up",
+              "unitTitle": "第五单元：倍的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_3_5_1",
+                  "levelName": "倍数对战",
+                  "knowledgePoint": "倍的意义(求几倍、求一个数的几倍)",
+                  "description": "学习倍的概念，挑战倍数对战！",
+                  "gameType": "g3_u5_multiply_times",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u3_6_up",
+              "unitTitle": "第六单元：多位数乘一位数",
+              "levels": [
+                {
+                  "levelId": "lvl_3_6_1",
+                  "levelName": "乘法竖式挑战",
+                  "knowledgePoint": "多位数乘一位数(口算、笔算、估算)",
+                  "description": "挑战多位数乘一位数，掌握乘法竖式！",
+                  "gameType": "g3_u6_multiply_multi",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u3_7_up",
+              "unitTitle": "第七单元：长方形和正方形",
+              "levels": [
+                {
+                  "levelId": "lvl_3_7_1",
+                  "levelName": "周长建筑师",
+                  "knowledgePoint": "长方形和正方形周长公式",
+                  "description": "成为周长建筑师，计算围墙长度！",
+                  "gameType": "g3_u7_perimeter",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u3_8_up",
+              "unitTitle": "第八单元：分数的初步认识",
+              "levels": [
+                {
+                  "levelId": "lvl_3_8_1",
+                  "levelName": "分数分裂者的挑战",
+                  "knowledgePoint": "几分之一的认识",
+                  "description": "分数分裂者守卫着披萨店，只有切出正确的分数才能通过！",
+                  "gameType": "g3_u8_fraction",
+                  "isUnlocked": true,
+                  "reward": 50
+                }
+              ]
+            },
+            {
+              "unitId": "u3_9_up",
+              "unitTitle": "第九单元：数学广角——集合",
+              "levels": [
+                {
+                  "levelId": "lvl_3_9_1",
+                  "levelName": "重叠问题",
+                  "knowledgePoint": "韦恩图与重叠问题(集合)",
+                  "description": "用韦恩图解决重叠问题，学会集合思维！",
+                  "gameType": "g3_u9_sets",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g3_down",
+          "term": "下册",
+          "worldTitle": "方位迷城的探索",
+          "units": [
+            {
+              "unitId": "u3_1_down",
+              "unitTitle": "位置与方向（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_1",
+                  "levelName": "方向寻路",
+                  "knowledgePoint": "东南西北八方向",
+                  "description": "在方位迷城中辨认东南西北等八个方向，找到正确的出路！",
+                  "gameType": "g3_d_u1_direction",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u3_2_down",
+              "unitTitle": "除数是一位数的除法",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_2",
+                  "levelName": "除法闯关",
+                  "knowledgePoint": "一位数除法口算与笔算",
+                  "description": "掌握一位数除法的口算和笔算方法，闯过一道道除法关卡！",
+                  "gameType": "g3_d_u2_divide_one",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_3_down",
+              "unitTitle": "复式统计表",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_3",
+                  "levelName": "数据分析师",
+                  "knowledgePoint": "复式统计表读取与分析",
+                  "description": "学会读取和分析复式统计表，成为小小数据分析师！",
+                  "gameType": "g3_d_u3_complex_table",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            },
+            {
+              "unitId": "u3_4_down",
+              "unitTitle": "两位数乘两位数",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_4",
+                  "levelName": "乘法格子阵",
+                  "knowledgePoint": "两位数乘两位数口算与笔算",
+                  "description": "在乘法格子阵中挑战两位数乘法，掌握口算与笔算技巧！",
+                  "gameType": "g3_d_u4_multiply_2digit",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u3_5_down",
+              "unitTitle": "面积",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_5",
+                  "levelName": "铺砖工程师",
+                  "knowledgePoint": "面积含义与公式",
+                  "description": "成为铺砖工程师，学习面积的含义和长方形、正方形面积公式！",
+                  "gameType": "g3_d_u5_area",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_6_down",
+              "unitTitle": "年月日",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_6",
+                  "levelName": "日历解谜",
+                  "knowledgePoint": "大小月、平闰年、24时计时法",
+                  "description": "揭开日历中的秘密，学会大小月、平闰年和24时计时法！",
+                  "gameType": "g3_d_u6_calendar",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_7_down",
+              "unitTitle": "小数的初步认识",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_7",
+                  "levelName": "小数超市",
+                  "knowledgePoint": "小数读写与简单加减",
+                  "description": "在小数超市里学习小数的读写和简单加减运算！",
+                  "gameType": "g3_d_u7_decimal_intro",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u3_8_down",
+              "unitTitle": "搭配（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_3_d_8",
+                  "levelName": "穿搭组合",
+                  "knowledgePoint": "稍复杂排列组合",
+                  "description": "学习稍复杂的排列组合，找出所有可能的穿搭搭配方案！",
+                  "gameType": "g3_d_u8_combo2",
+                  "isUnlocked": false,
+                  "reward": 25
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gradeId": "g4",
+      "gradeName": "四年级",
+      "worlds": [
+        {
+          "worldId": "g4_up",
+          "term": "上册",
+          "worldTitle": "几何岛屿的探险",
+          "units": [
+            {
+              "unitId": "u4_1_up",
+              "unitTitle": "大数的认识",
+              "levels": [
+                {
+                  "levelId": "lvl_4_1_1",
+                  "levelName": "大数读写塔",
+                  "knowledgePoint": "亿以内数认识与读写",
+                  "description": "攀登大数读写塔，掌握亿以内数的认识、读法和写法！",
+                  "gameType": "g4_u1_big_numbers",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_2_up",
+              "unitTitle": "公顷和平方千米",
+              "levels": [
+                {
+                  "levelId": "lvl_4_2_1",
+                  "levelName": "土地面积换算",
+                  "knowledgePoint": "公顷平方千米换算",
+                  "description": "学习公顷和平方千米，掌握大面积单位之间的换算！",
+                  "gameType": "g4_u2_area_units",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_3_up",
+              "unitTitle": "角的度量",
+              "levels": [
+                {
+                  "levelId": "lvl_4_3_1",
+                  "levelName": "角度射击",
+                  "knowledgePoint": "量角器使用与角分类",
+                  "description": "学会使用量角器测量角度，按角度大小精确射击目标！",
+                  "gameType": "g4_u3_angle_measure",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_4_up",
+              "unitTitle": "三位数乘两位数",
+              "levels": [
+                {
+                  "levelId": "lvl_4_4_1",
+                  "levelName": "竖式挑战",
+                  "knowledgePoint": "三位数乘两位数笔算",
+                  "description": "挑战三位数乘两位数的竖式计算，提升乘法运算能力！",
+                  "gameType": "g4_u4_multiply_3x2",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u4_5_up",
+              "unitTitle": "平行四边形和梯形",
+              "levels": [
+                {
+                  "levelId": "lvl_4_5_1",
+                  "levelName": "图形分类",
+                  "knowledgePoint": "平行垂直与四边形特征",
+                  "description": "认识平行与垂直，学会区分平行四边形和梯形的特征！",
+                  "gameType": "g4_u5_parallel_trapezoid",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_6_up",
+              "unitTitle": "除数是两位数的除法",
+              "levels": [
+                {
+                  "levelId": "lvl_4_6_1",
+                  "levelName": "试商闯关",
+                  "knowledgePoint": "两位数除法笔算",
+                  "description": "学会试商方法，挑战除数是两位数的除法笔算关卡！",
+                  "gameType": "g4_u6_divide_2digit",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u4_7_up",
+              "unitTitle": "条形统计图",
+              "levels": [
+                {
+                  "levelId": "lvl_4_7_1",
+                  "levelName": "数据绘图",
+                  "knowledgePoint": "条形统计图读取与绘制",
+                  "description": "学会读取和绘制条形统计图，用图表展示数据！",
+                  "gameType": "g4_u7_bar_chart",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_8_up",
+              "unitTitle": "优化策略",
+              "levels": [
+                {
+                  "levelId": "lvl_4_8_1",
+                  "levelName": "时间优化师",
+                  "knowledgePoint": "沏茶烙饼优化问题",
+                  "description": "运用数学思维解决沏茶烙饼等生活中的优化问题！",
+                  "gameType": "g4_u8_optimization",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g4_down",
+          "term": "下册",
+          "worldTitle": "运算迷宫的挑战",
+          "units": [
+            {
+              "unitId": "u4_1_down",
+              "unitTitle": "四则运算",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_1",
+                  "levelName": "运算顺序迷宫",
+                  "knowledgePoint": "四则运算意义与顺序",
+                  "description": "探索运算顺序迷宫，掌握四则混合运算的正确顺序！",
+                  "gameType": "g4_d_u1_four_ops",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_2_down",
+              "unitTitle": "观察物体（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_2",
+                  "levelName": "三视图解谜",
+                  "knowledgePoint": "不同位置观察物体画视图",
+                  "description": "从不同位置观察物体，画出正确的三视图来解开谜题！",
+                  "gameType": "g4_d_u2_observe2",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_3_down",
+              "unitTitle": "运算定律",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_3",
+                  "levelName": "简便计算快攻",
+                  "knowledgePoint": "加减乘除运算定律与简便计算",
+                  "description": "运用运算定律进行简便计算，提升运算速度和准确率！",
+                  "gameType": "g4_d_u3_laws",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_4_down",
+              "unitTitle": "小数的意义和性质",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_4",
+                  "levelName": "小数点跳跃",
+                  "knowledgePoint": "小数读写计数单位与性质",
+                  "description": "跟随小数点跳跃，学习小数的读写、计数单位和基本性质！",
+                  "gameType": "g4_d_u4_decimal_meaning",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_5_down",
+              "unitTitle": "三角形",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_5",
+                  "levelName": "三角形分类",
+                  "knowledgePoint": "三角形特性分类与内角和",
+                  "description": "探索三角形的特性与分类，掌握三角形内角和的秘密！",
+                  "gameType": "g4_d_u5_triangle",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u4_6_down",
+              "unitTitle": "小数的加法和减法",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_6",
+                  "levelName": "小数超市购物",
+                  "knowledgePoint": "小数加减笔算(小数点对齐)",
+                  "description": "在小数超市购物，学会小数加减笔算并注意小数点对齐！",
+                  "gameType": "g4_d_u6_decimal_addsub",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_7_down",
+              "unitTitle": "图形的运动（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_7",
+                  "levelName": "对称与平移",
+                  "knowledgePoint": "轴对称与平移画图",
+                  "description": "学习轴对称与平移，画出对称图形和平移后的图案！",
+                  "gameType": "g4_d_u7_motion2",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_8_down",
+              "unitTitle": "平均数与条形统计图",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_8",
+                  "levelName": "数据分析大师",
+                  "knowledgePoint": "平均数计算与复式条形图",
+                  "description": "计算平均数并绘制复式条形统计图，成为数据分析大师！",
+                  "gameType": "g4_d_u8_avg_bar",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u4_9_down",
+              "unitTitle": "鸡兔同笼",
+              "levels": [
+                {
+                  "levelId": "lvl_4_d_9",
+                  "levelName": "鸡兔推理",
+                  "knowledgePoint": "列表法假设法解鸡兔同笼",
+                  "description": "用列表法和假设法解决鸡兔同笼问题，锻炼逻辑推理能力！",
+                  "gameType": "g4_d_u9_chicken_rabbit",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gradeId": "g5",
+      "gradeName": "五年级",
+      "worlds": [
+        {
+          "worldId": "g5_up",
+          "term": "上册",
+          "worldTitle": "小数迷宫的考验",
+          "units": [
+            {
+              "unitId": "u5_1_up",
+              "unitTitle": "小数乘法",
+              "levels": [
+                {
+                  "levelId": "lvl_5_1_1",
+                  "levelName": "小数点定位挑战",
+                  "knowledgePoint": "小数乘法算理与小数点位置",
+                  "description": "掌握小数乘法的算理，学会确定积中小数点的正确位置！",
+                  "gameType": "g5_u1_decimal_multiply",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u5_2_up",
+              "unitTitle": "位置",
+              "levels": [
+                {
+                  "levelId": "lvl_5_2_1",
+                  "levelName": "坐标寻宝",
+                  "knowledgePoint": "用数对(列行)表示位置",
+                  "description": "用数对表示位置，在坐标地图上找到隐藏的宝藏！",
+                  "gameType": "g5_u2_position",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u5_3_up",
+              "unitTitle": "小数除法",
+              "levels": [
+                {
+                  "levelId": "lvl_5_3_1",
+                  "levelName": "除法迷宫",
+                  "knowledgePoint": "小数除法算理与小数点",
+                  "description": "闯过除法迷宫，掌握小数除法的算理和小数点处理方法！",
+                  "gameType": "g5_u3_decimal_divide",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_4_up",
+              "unitTitle": "可能性",
+              "levels": [
+                {
+                  "levelId": "lvl_5_4_1",
+                  "levelName": "概率转盘",
+                  "knowledgePoint": "事件确定性与可能性大小",
+                  "description": "转动概率转盘，学习事件的确定性与可能性大小！",
+                  "gameType": "g5_u4_probability",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u5_5_up",
+              "unitTitle": "简易方程",
+              "levels": [
+                {
+                  "levelId": "lvl_5_5_1",
+                  "levelName": "方程天平",
+                  "knowledgePoint": "字母表示数、方程意义与解法",
+                  "description": "用天平理解方程的意义，学会用字母表示数并解方程！",
+                  "gameType": "g5_u5_equation",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_6_up",
+              "unitTitle": "多边形的面积",
+              "levels": [
+                {
+                  "levelId": "lvl_5_6_1",
+                  "levelName": "面积工程师",
+                  "knowledgePoint": "平行四边形三角形梯形面积",
+                  "description": "成为面积工程师，掌握平行四边形、三角形和梯形的面积公式！",
+                  "gameType": "g5_u6_polygon_area",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_7_up",
+              "unitTitle": "植树问题",
+              "levels": [
+                {
+                  "levelId": "lvl_5_7_1",
+                  "levelName": "植树策略",
+                  "knowledgePoint": "两端栽/不栽/封闭图形",
+                  "description": "学习植树问题的三种类型，掌握两端栽、不栽和封闭图形的策略！",
+                  "gameType": "g5_u7_tree_problem",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g5_down",
+          "term": "下册",
+          "worldTitle": "分数之城的冒险",
+          "units": [
+            {
+              "unitId": "u5_1_down",
+              "unitTitle": "观察物体（三）",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_1",
+                  "levelName": "三视图还原",
+                  "knowledgePoint": "三视图还原立体图形",
+                  "description": "根据三视图还原立体图形，锻炼空间想象力！",
+                  "gameType": "g5_d_u1_observe3",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u5_2_down",
+              "unitTitle": "因数与倍数",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_2",
+                  "levelName": "因数忍者",
+                  "knowledgePoint": "因数倍数质数合数公因数公倍数",
+                  "description": "成为因数忍者，掌握因数、倍数、质数、合数的奥秘！",
+                  "gameType": "g5_d_u2_factor_multiple",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_3_down",
+              "unitTitle": "长方体和正方体",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_3",
+                  "levelName": "体积灌溉",
+                  "knowledgePoint": "表面积体积容积公式",
+                  "description": "学习长方体和正方体的表面积、体积和容积公式！",
+                  "gameType": "g5_d_u3_cuboid",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_4_down",
+              "unitTitle": "分数的意义和性质",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_4",
+                  "levelName": "分数披萨",
+                  "knowledgePoint": "真假带分数约分通分互化",
+                  "description": "用披萨学习分数的意义，掌握真分数、假分数、约分和通分！",
+                  "gameType": "g5_d_u4_fraction_meaning",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_5_down",
+              "unitTitle": "图形的运动（三）",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_5",
+                  "levelName": "旋转画图",
+                  "knowledgePoint": "旋转中心方向角度画图",
+                  "description": "掌握旋转的中心、方向和角度，画出旋转后的图形！",
+                  "gameType": "g5_d_u5_rotation",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u5_6_down",
+              "unitTitle": "分数的加法和减法",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_6",
+                  "levelName": "异分母挑战",
+                  "knowledgePoint": "同分母异分母带分数加减",
+                  "description": "挑战异分母分数加减法，掌握同分母、异分母和带分数的运算法则！",
+                  "gameType": "g5_d_u6_fraction_addsub",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u5_7_down",
+              "unitTitle": "折线统计图",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_7",
+                  "levelName": "趋势分析",
+                  "knowledgePoint": "单式复式折线图绘制分析",
+                  "description": "学会绘制和分析单式、复式折线统计图，洞察数据趋势！",
+                  "gameType": "g5_d_u7_line_chart",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u5_8_down",
+              "unitTitle": "找次品",
+              "levels": [
+                {
+                  "levelId": "lvl_5_d_8",
+                  "levelName": "三分法推理",
+                  "knowledgePoint": "最优策略找次品",
+                  "description": "用三分法的最优策略，在最少次数内找出次品！",
+                  "gameType": "g5_d_u8_defective",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gradeId": "g6",
+      "gradeName": "六年级",
+      "worlds": [
+        {
+          "worldId": "g6_up",
+          "term": "上册",
+          "worldTitle": "比例神殿的终章",
+          "units": [
+            {
+              "unitId": "u6_1_up",
+              "unitTitle": "分数乘法",
+              "levels": [
+                {
+                  "levelId": "lvl_6_1_1",
+                  "levelName": "分数乘法挑战",
+                  "knowledgePoint": "分数乘法意义与计算倒数",
+                  "description": "挑战分数乘法，理解分数乘法的意义并掌握倒数的概念！",
+                  "gameType": "g6_u1_frac_multiply",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u6_2_up",
+              "unitTitle": "位置与方向（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_6_2_1",
+                  "levelName": "方向导航",
+                  "knowledgePoint": "用方向加距离确定位置",
+                  "description": "用方向和距离精确确定位置，成为方向导航大师！",
+                  "gameType": "g6_u2_direction2",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u6_3_up",
+              "unitTitle": "分数除法",
+              "levels": [
+                {
+                  "levelId": "lvl_6_3_1",
+                  "levelName": "倒数翻转",
+                  "knowledgePoint": "分数除法倒数混合运算",
+                  "description": "用倒数翻转法掌握分数除法，挑战分数混合运算！",
+                  "gameType": "g6_u3_frac_divide",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u6_4_up",
+              "unitTitle": "比",
+              "levels": [
+                {
+                  "levelId": "lvl_6_4_1",
+                  "levelName": "按比分配",
+                  "knowledgePoint": "比的意义基本性质化简比",
+                  "description": "理解比的意义，学会化简比并按比分配解决实际问题！",
+                  "gameType": "g6_u4_ratio",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u6_5_up",
+              "unitTitle": "圆",
+              "levels": [
+                {
+                  "levelId": "lvl_6_5_1",
+                  "levelName": "圆的探险",
+                  "knowledgePoint": "圆的周长面积公式",
+                  "description": "探索圆的奥秘，掌握圆的周长和面积计算公式！",
+                  "gameType": "g6_u5_circle",
+                  "isUnlocked": false,
+                  "reward": 45
+                }
+              ]
+            },
+            {
+              "unitId": "u6_6_up",
+              "unitTitle": "百分数（一）",
+              "levels": [
+                {
+                  "levelId": "lvl_6_6_1",
+                  "levelName": "百分比换算",
+                  "knowledgePoint": "百分数意义与互化",
+                  "description": "理解百分数的意义，掌握百分数与分数、小数的互化！",
+                  "gameType": "g6_u6_percent1",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u6_7_up",
+              "unitTitle": "扇形统计图",
+              "levels": [
+                {
+                  "levelId": "lvl_6_7_1",
+                  "levelName": "饼图解读",
+                  "knowledgePoint": "扇形统计图特点读取",
+                  "description": "学会解读扇形统计图，了解它的特点和数据表示方式！",
+                  "gameType": "g6_u7_pie_chart",
+                  "isUnlocked": false,
+                  "reward": 30
+                }
+              ]
+            },
+            {
+              "unitId": "u6_8_up",
+              "unitTitle": "数与形",
+              "levels": [
+                {
+                  "levelId": "lvl_6_8_1",
+                  "levelName": "数形结合",
+                  "knowledgePoint": "数形结合找规律平方数",
+                  "description": "探索数与形的关系，用数形结合的方法发现平方数的规律！",
+                  "gameType": "g6_u8_num_shape",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "worldId": "g6_down",
+          "term": "下册",
+          "worldTitle": "毕业挑战",
+          "units": [
+            {
+              "unitId": "u6_1_down",
+              "unitTitle": "负数",
+              "levels": [
+                {
+                  "levelId": "lvl_6_d_1",
+                  "levelName": "数轴温度计",
+                  "knowledgePoint": "负数意义读写数轴比较",
+                  "description": "在数轴温度计上认识负数，学会负数的读写和大小比较！",
+                  "gameType": "g6_d_u1_negative",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u6_2_down",
+              "unitTitle": "百分数（二）",
+              "levels": [
+                {
+                  "levelId": "lvl_6_d_2",
+                  "levelName": "折扣王国",
+                  "knowledgePoint": "折扣成数税率利率",
+                  "description": "在折扣王国中学习折扣、成数、税率和利率的实际应用！",
+                  "gameType": "g6_d_u2_percent2",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            },
+            {
+              "unitId": "u6_3_down",
+              "unitTitle": "圆柱与圆锥",
+              "levels": [
+                {
+                  "levelId": "lvl_6_d_3",
+                  "levelName": "立体体积挑战",
+                  "knowledgePoint": "圆柱圆锥表面积体积",
+                  "description": "挑战圆柱和圆锥的表面积与体积计算，掌握立体图形的奥秘！",
+                  "gameType": "g6_d_u3_cylinder",
+                  "isUnlocked": false,
+                  "reward": 45
+                }
+              ]
+            },
+            {
+              "unitId": "u6_4_down",
+              "unitTitle": "比例",
+              "levels": [
+                {
+                  "levelId": "lvl_6_d_4",
+                  "levelName": "比例尺绘图",
+                  "knowledgePoint": "比例意义正反比例比例尺",
+                  "description": "理解比例的意义，区分正反比例并用比例尺绘图！",
+                  "gameType": "g6_d_u4_proportion",
+                  "isUnlocked": false,
+                  "reward": 40
+                }
+              ]
+            },
+            {
+              "unitId": "u6_5_down",
+              "unitTitle": "鸽巢问题",
+              "levels": [
+                {
+                  "levelId": "lvl_6_d_5",
+                  "levelName": "抽屉原理",
+                  "knowledgePoint": "鸽巢原理解决抽屉问题",
+                  "description": "运用鸽巢原理（抽屉原理）解决有趣的数学问题！",
+                  "gameType": "g6_d_u5_pigeonhole",
+                  "isUnlocked": false,
+                  "reward": 35
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

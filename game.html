@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学大冒险 - 通用关卡容器</title>
+    <style>
+        /* --- 设计系统 (与大厅保持一致) --- */
+        :root {
+            --primary-color: #4ade80; 
+            --secondary-color: #60a5fa; 
+            --accent-color: #f87171; 
+            --bg-color: #f0f9ff; 
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- 顶部导航栏 --- */
+        .navbar {
+            height: 70px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            z-index: 100;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 200px;
+        }
+
+        .nav-center {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 0px #fff;
+        }
+
+        .btn-back {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-back:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(248, 113, 113, 0.3);
+        }
+
+        .coin-display {
+            background: #fff9db;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #f59e0b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #fef3c7;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-left: auto;
+        }
+
+        .coin-icon {
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* --- 核心游戏容器 --- */
+        #game-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        #game-root {
+            width: 100%;
+            max-width: 1100px;
+            height: 100%;
+            max-height: 750px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- 正在加载/错误覆盖层 --- */
+        #status-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            transition: opacity 0.6s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #e2e8f0;
+            border-top: 6px solid var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            margin: 0 auto 25px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-text {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- 错误提示样式 --- */
+        .error-container {
+            display: none;
+            text-align: center;
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-retry {
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .btn-retry:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="btn-back">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                返回大厅
+            </a>
+        </div>
+        <div class="nav-center" id="level-name">加载关卡中...</div>
+        <div class="nav-right">
+            <div class="coin-display">
+                <span class="coin-icon">💰</span>
+                <span id="coin-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 核心游戏区 -->
+    <main id="game-container">
+        <div id="game-root">
+            <!-- 加载与状态覆盖层 -->
+            <div id="status-overlay">
+                <div id="loader" class="loader-content">
+                    <div class="loading-spinner"></div>
+                    <div class="status-text">正在召唤数字精灵...</div>
+                </div>
+                
+                <div id="error-box" class="error-container">
+                    <div class="error-icon">🧭</div>
+                    <div class="error-title" id="error-msg">关卡好像走丢了</div>
+                    <a href="index.html" class="btn-retry">返回游戏大厅</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 引入全局状态管理器 -->
+    <script src="./src/core/stateManager.js"></script>
+    <script src="./src/games/common/gameHelpers.js"></script>
+
+    <script>
+        /**
+         * MathAdventure 通用关卡容器驱动
+         */
+        class UniversalGameContainer {
+            constructor() {
+                this.levelId = null;
+                this.levelData = null;
+                
+                // DOM 引用
+                this.ui = {
+                    levelName: document.getElementById('level-name'),
+                    coinCount: document.getElementById('coin-count'),
+                    overlay: document.getElementById('status-overlay'),
+                    loader: document.getElementById('loader'),
+                    errorBox: document.getElementById('error-box'),
+                    errorMsg: document.getElementById('error-msg'),
+                    gameRoot: document.getElementById('game-root')
+                };
+            }
+
+            /** 初始化流程 */
+            async init() {
+                console.log("[Container] 容器初始化中...");
+                
+                // 1. 解析 URL 里的关卡 ID
+                const params = new URLSearchParams(window.location.search);
+                this.levelId = params.get('id');
+
+                if (!this.levelId) {
+                    this.showError("参数错误：未指定关卡ID");
+                    return;
+                }
+
+                // 2. 更新金币数量 (初始显示)
+                this.syncCoins();
+
+                try {
+                    // 3. 异步获取关卡数据
+                    const response = await fetch('./data/levels.json');
+                    if (!response.ok) throw new Error("无法连接数据服务器");
+                    
+                    const data = await response.json();
+                    this.levelData = this.searchLevel(data, this.levelId);
+
+                    if (!this.levelData) {
+                        this.showError("关卡不存在：系统找不到该坐标");
+                        return;
+                    }
+
+                    // 4. 更新页面标题与UI
+                    this.ui.levelName.textContent = this.levelData.levelName;
+
+                    // 5. 动态加载游戏模块
+                    await this.injectGameModule();
+
+                } catch (error) {
+                    console.error("[Container] 加载异常:", error);
+                    this.showError("加载失败：" + error.message);
+                }
+            }
+
+            /** 递归寻找关卡数据 */
+            searchLevel(data, id) {
+                for (const grade of data.grades) {
+                    for (const world of grade.worlds) {
+                        for (const unit of world.units) {
+                            const level = unit.levels.find(l => l.levelId === id);
+                            if (level) return level;
+                        }
+                    }
+                }
+                return null;
+            }
+
+            /** 同步金币显示 */
+            syncCoins() {
+                if (window.GameManager) {
+                    this.ui.coinCount.textContent = window.GameManager.coins;
+                }
+            }
+
+            /** 显示错误信息 */
+            showError(msg) {
+                this.ui.loader.style.display = 'none';
+                this.ui.errorBox.style.display = 'block';
+                this.ui.errorMsg.textContent = msg;
+            }
+
+            /** 核心：动态加载脚本 */
+            async injectGameModule() {
+                const gameType = this.levelData.gameType;
+                let scriptUrl = '';
+
+                // 基于命名约定的自动路由：g{grade}_u{unit}_{topic} → ./src/games/grade{N}/{gameType}.js
+                const match = gameType.match(/^g(\d+)_/);
+                if (match) {
+                    scriptUrl = `./src/games/grade${match[1]}/${gameType}.js`;
+                } else {
+                    scriptUrl = `./src/games/common/${gameType}.js`;
+                }
+
+                console.log(`[Container] 正在注入组件: ${scriptUrl}`);
+
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = scriptUrl;
+                    script.type = 'text/javascript';
+                    
+                    script.onload = () => {
+                        console.log("[Container] 组件加载成功，准备启动...");
+                        this.launch(resolve);
+                    };
+
+                    script.onerror = () => {
+                        reject(new Error(`无法加载脚本: ${scriptUrl}`));
+                    };
+
+                    document.body.appendChild(script);
+                });
+            }
+
+            /** 启动游戏逻辑 */
+            launch(callback) {
+                // 模拟一个更平滑的加载感
+                setTimeout(() => {
+                    // 隐藏加载层
+                    this.ui.overlay.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        this.ui.overlay.style.display = 'none';
+                        
+                        // 核心调用：执行模块初始化
+                        // 约定：所有游戏模块需在 window.CurrentGameModule 下暴露 init(container, data)
+                        try {
+                            if (!window.CurrentGameModule) {
+                                throw new Error("模块加载不完整：window.CurrentGameModule 未定义");
+                            }
+                            if (typeof window.CurrentGameModule.init !== 'function') {
+                                throw new Error("模块缺少 init 接口");
+                            }
+                            window.CurrentGameModule.init('#game-root', this.levelData);
+                        } catch (e) {
+                            console.error("[Container] 游戏启动崩溃或加载失败:", e);
+                            this.ui.overlay.style.display = 'flex';
+                            this.ui.overlay.style.opacity = '1';
+                            this.showError("游戏运行出错: " + e.message);
+                        }
+                        
+                        callback();
+                    }, 600);
+                }, 800);
+            }
+        }
+
+        // 页面入口
+        window.addEventListener('DOMContentLoaded', () => {
+            const gameApp = new UniversalGameContainer();
+            gameApp.init();
+            
+            // 全局监听金币变化（如果需要实时更新）
+            window.addEventListener('storage', () => gameApp.syncCoins());
+        });
+    </script>
+</body>
+</html>
