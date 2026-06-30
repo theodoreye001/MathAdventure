@@ -112,9 +112,10 @@
                     padding: 18px 45px; font-size: 24px; font-weight: bold;
                     border: none; border-radius: 20px; cursor: pointer; transition: 0.2s;
                 }
-                .btn-gold { background: #fbbf24; color: #1e1b4b; box-shadow: 0 6px 0 #d97706; }
-                .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
-                .btn-row { display: flex; gap: 20px; margin-top: 30px; }
+                 .btn-gold { background: #fbbf24; color: #1e1b4b; box-shadow: 0 6px 0 #d97706; }
+                 .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                 .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #475569; }
+                 .btn-row { display: flex; gap: 20px; margin-top: 30px; }
             `;
             document.head.appendChild(style);
         },
@@ -149,8 +150,9 @@
                             <p style="font-size: 20px; color: #64748b;">你已经完美攻克了 20 以内的进位加法。</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">获得：💰 40</div>
                             <div class="btn-row">
+                                <button class="ui-btn btn-green" id="btn-next">下一关</button>
                                 <button class="ui-btn btn-gold" id="btn-again">再练一题</button>
-                                <button class="ui-btn btn-green" id="btn-back">回大厅</button>
+                                <button class="ui-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
                     </div>
@@ -162,6 +164,7 @@
             left.ondragleave = () => left.classList.remove('highlight');
             left.ondrop = e => this.handleDrop(e);
 
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_d_1'; };
             document.getElementById('btn-again').onclick = () => this.generateLevel();
             document.getElementById('btn-back').onclick = () => { window.location.href = 'index.html'; };
         },

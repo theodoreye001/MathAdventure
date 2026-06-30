@@ -125,7 +125,7 @@
 
             state.container.innerHTML =
                 '<div class="clf-game">' +
-                    H.guideBarHTML('🔍', '统计侦探出动啦！', 'clf-guide-text') +
+                    H.guideBarHTML('🔍', '拖动物品放入正确的位置，统计侦探出动啦！', 'clf-guide-text') +
 
                     /* Phase 1 */
                     '<div id="clf-phase1" class="clf-phase1">' +
@@ -280,7 +280,7 @@
                     window.GameManager.updateMastery(state.levelData.knowledgePoint, -5);
                 }
                 setTimeout(function () {
-                    H.updateGuide('clf-guide-text', '🔍 继续把物品拖到正确的箱子里吧！');
+                    H.updateGuide('clf-guide-text', '🔍 拖动物品放入正确的位置，继续把物品拖到正确的箱子里吧！');
                 }, 1500);
             }
         },

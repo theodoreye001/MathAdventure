@@ -17,7 +17,7 @@
         skew = skew || 30;
         var pad = 20;
         var svgW = w + skew + pad * 2;
-        var svgH = h + pad * 2;
+        var svgH = h + pad * 2 + 25;
         var pts = [
             (pad + skew) + ',' + pad,
             (pad + skew + w) + ',' + pad,
@@ -26,7 +26,7 @@
         ].join(' ');
         return '<svg width="' + svgW + '" height="' + svgH + '" viewBox="0 0 ' + svgW + ' ' + svgH + '">' +
             '<polygon points="' + pts + '" fill="rgba(99,102,241,0.15)" stroke="#6366f1" stroke-width="3"/>' +
-            '<text x="' + (svgW / 2) + '" y="' + (svgH + 14) + '" text-anchor="middle" font-size="13" fill="#6366f1">平行四边形</text>' +
+            '<text x="' + (svgW / 2) + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="14" font-weight="bold" fill="#6366f1">平行四边形</text>' +
             '</svg>';
     }
 
@@ -35,7 +35,7 @@
         var pad = 20;
         var skew = (bottom - top) / 2;
         var svgW = bottom + pad * 2;
-        var svgH = h + pad * 2;
+        var svgH = h + pad * 2 + 25;
         var pts = [
             (pad + skew) + ',' + pad,
             (pad + skew + top) + ',' + pad,
@@ -44,7 +44,7 @@
         ].join(' ');
         return '<svg width="' + svgW + '" height="' + svgH + '" viewBox="0 0 ' + svgW + ' ' + svgH + '">' +
             '<polygon points="' + pts + '" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="3"/>' +
-            '<text x="' + (svgW / 2) + '" y="' + (svgH + 14) + '" text-anchor="middle" font-size="13" fill="#f59e0b">梯形</text>' +
+            '<text x="' + (svgW / 2) + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="14" font-weight="bold" fill="#f59e0b">梯形</text>' +
             '</svg>';
     }
 
@@ -52,10 +52,10 @@
     function rectSVG(w, h) {
         var pad = 20;
         var svgW = w + pad * 2;
-        var svgH = h + pad * 2;
+        var svgH = h + pad * 2 + 25;
         return '<svg width="' + svgW + '" height="' + svgH + '" viewBox="0 0 ' + svgW + ' ' + svgH + '">' +
             '<rect x="' + pad + '" y="' + pad + '" width="' + w + '" height="' + h + '" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="3"/>' +
-            '<text x="' + (svgW / 2) + '" y="' + (svgH + 14) + '" text-anchor="middle" font-size="13" fill="#10b981">长方形</text>' +
+            '<text x="' + (svgW / 2) + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="14" font-weight="bold" fill="#10b981">长方形</text>' +
             '</svg>';
     }
 

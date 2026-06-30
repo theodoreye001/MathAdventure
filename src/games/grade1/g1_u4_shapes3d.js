@@ -172,6 +172,7 @@
                 }
                 .btn-gold { background: #fbbf24; color: #1e293b; box-shadow: 0 6px 0 #d97706; }
                 .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #475569; }
             `;
             document.head.appendChild(style);
         },
@@ -213,8 +214,9 @@
                             <p style="font-size: 20px; color: #64748b;">你已经掌握了各种立体图形的特征。</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">奖励：💰 25</div>
                             <div class="btn-row">
+                                <button class="ui-btn btn-green" id="btn-next">下一关</button>
                                 <button class="ui-btn btn-gold" id="btn-again">再练一次</button>
-                                <button class="ui-btn btn-green" id="btn-back">回大厅</button>
+                                <button class="ui-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
                     </div>
@@ -236,12 +238,13 @@
             state.container.querySelectorAll('.geom').forEach(g => {
                 g.onclick = () => this.handleChallenge(g.dataset.ans);
             });
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_5_1'; };
             document.getElementById('btn-again').onclick = () => { this.resetState(); this.renderLayout(); this.startPhase1(); };
             document.getElementById('btn-back').onclick = () => { window.location.href = 'index.html'; };
         },
 
         startPhase1: function () {
-            this.updateGuide('🔊 请把物品拖入对应的形状框内吧！');
+            this.updateGuide('🔊 拖动物品放入正确的位置，把物品拖入对应的形状框内吧！');
         },
 
         handleDrop: function (e, b) {

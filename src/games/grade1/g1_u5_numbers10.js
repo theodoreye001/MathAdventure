@@ -42,13 +42,48 @@
             this.startPhase1();
         },
 
+        initP1Data: function() {
+            let left, right;
+            do {
+                left = Math.floor(Math.random() * 10); // 0 to 9
+                right = Math.floor(Math.random() * (10 - left)); // 0 to 9-left
+            } while (left === right);
+
+            const total = left + right;
+            state.p1.left = left;
+            state.p1.right = right;
+            state.p1.total = total;
+            state.p1.equations = [
+                { id: 'eq1', parts: [null, '+', null, '=', null], target: [left, '+', right, '=', total] },
+                { id: 'eq2', parts: [null, '+', null, '=', null], target: [right, '+', left, '=', total] },
+                { id: 'eq3', parts: [null, '-', null, '=', null], target: [total, '-', left, '=', right] },
+                { id: 'eq4', parts: [null, '-', null, '=', null], target: [total, '-', right, '=', left] }
+            ];
+            state.p1.solvedCount = 0;
+        },
+
+        initP2Data: function() {
+            let base, s1, s2, total;
+            do {
+                base = Math.floor(Math.random() * 5) + 1; // 1 to 5
+                s1 = Math.floor(Math.random() * 3) + 1; // 1 to 3
+                s2 = Math.floor(Math.random() * (10 - base - s1)); // 0 to 9 - base - s1
+                total = base + s1 + s2;
+            } while (total > 9 || total < base + s1); // Ensure total <= 9
+            
+            state.p2.base = base;
+            state.p2.s1 = s1;
+            state.p2.s2 = s2;
+            state.p2.total = total;
+            state.p2.currentStep = 0;
+        },
+
         resetState: function() {
             state.phase = 1;
             state.isFinished = false;
             state.mistakes = 0;
-            state.p1.solvedCount = 0;
-            state.p1.equations.forEach(eq => eq.parts = eq.parts.map(p => (p === '+' || p === '-' || p === '=') ? p : null));
-            state.p2.currentStep = 0;
+            this.initP1Data();
+            this.initP2Data();
         },
 
         injectStyles: function () {
@@ -158,6 +193,7 @@
                 }
                 .btn-gold { background: #fbbf24; color: #92400e; box-shadow: 0 6px 0 #d97706; }
                 .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #475569; }
             `;
             document.head.appendChild(style);
         },
@@ -174,11 +210,11 @@
                     <div id="phase1" class="scene-container" style="display:flex">
                         <div class="flower-display">
                             <div class="flower-group">
-                                ${Array(6).fill('<div class="flower">🌸</div>').join('')}
+                                ${Array(state.p1.left).fill('<div class="flower">🌸</div>').join('')}
                             </div>
                             <div style="width:4px; background:#fbbf24; opacity:0.3"></div>
                             <div class="flower-group">
-                                ${Array(3).fill('<div class="flower">🌻</div>').join('')}
+                                ${Array(state.p1.right).fill('<div class="flower">🌻</div>').join('')}
                             </div>
                         </div>
                         <div class="equation-grid">
@@ -193,7 +229,7 @@
                             `).join('')}
                         </div>
                         <div class="card-dock">
-                            ${[3, 6, 9].map(n => `<div class="num-card" draggable="true" data-n="${n}">${n}</div>`).join('')}
+                            ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<div class="num-card" draggable="true" data-n="${n}">${n}</div>`).join('')}
                         </div>
                     </div>
 
@@ -202,23 +238,23 @@
                         <div class="roller-coaster">
                             <div class="track"></div>
                             <div class="car" id="car">
-                                <div class="passenger">👦</div><div class="passenger">👧</div><div class="passenger">👶</div>
+                                ${Array(state.p2.base).fill('<div class="passenger">👦</div>').join('')}
                             </div>
-                            <div class="station" style="left:50px">起点(3人)</div>
-                            <div class="station" style="left:350px">第一站(+2人)</div>
-                            <div class="station" style="left:650px">第二站(+4人)</div>
+                            <div class="station" style="left:50px">起点(${state.p2.base}人)</div>
+                            <div class="station" style="left:350px">第一站(+${state.p2.s1}人)</div>
+                            <div class="station" style="left:650px">第二站(+${state.p2.s2}人)</div>
                         </div>
                         <div class="chain-eq" id="chain-eq">
-                            <div class="eq-part">3</div>
+                            <div class="eq-part">${state.p2.base}</div>
                             <div class="eq-part">+</div>
-                            <div class="eq-part">2</div>
+                            <div class="eq-part">${state.p2.s1}</div>
                             <div class="eq-part">+</div>
-                            <div class="eq-part">4</div>
+                            <div class="eq-part">${state.p2.s2}</div>
                             <div class="eq-part">=</div>
                             <div class="eq-part" id="chain-res" style="border-bottom:3px solid #fbbf24; cursor:pointer">?</div>
                         </div>
                         <div class="card-dock" id="p2-dock">
-                            ${[5, 7, 9].map(n => `<div class="num-card" data-n="${n}">${n}</div>`).join('')}
+                            ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<div class="num-card" data-n="${n}">${n}</div>`).join('')}
                         </div>
                     </div>
 
@@ -230,8 +266,9 @@
                             <p style="font-size:20px; color:#475569;">你已经掌握了 6-10 的组成与连加技巧。</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">获得：💰 25</div>
                             <div class="btn-row">
+                                <button class="ui-btn btn-green" id="btn-next">下一关</button>
                                 <button class="ui-btn btn-gold" id="btn-again">再玩一次</button>
-                                <button class="ui-btn btn-green" id="btn-back">回大厅</button>
+                                <button class="ui-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
                     </div>
@@ -253,12 +290,13 @@
                 slot.ondrop = e => this.handleP1Drop(e, slot);
             });
 
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_6_1'; };
             document.getElementById('btn-again').onclick = () => { this.resetState(); this.renderLayout(); this.startPhase1(); };
             document.getElementById('btn-back').onclick = () => { window.location.href = 'index.html'; };
         },
 
         startPhase1: function () {
-            this.updateGuide('🔊 观察花朵，填满这四个神奇的算式吧！');
+            this.updateGuide('🔊 观察花朵，拖动数字放入正确的位置，填满这四个神奇的算式吧！');
         },
 
         handleP1Drop: function (e, slot) {
@@ -294,14 +332,14 @@
             state.phase = 2;
             document.getElementById('phase1').style.display = 'none';
             document.getElementById('phase2').style.display = 'flex';
-            this.updateGuide('🔊 连加过山车出发了！第一站上 2 人，第二站上 4 人...');
+            this.updateGuide(`🔊 连加过山车出发了！第一站上 ${state.p2.s1} 人，第二站上 ${state.p2.s2} 人...`);
             
             const car = document.getElementById('car');
             // 动画
             setTimeout(() => {
                 car.style.left = '350px';
-                this.addPassengers(2);
-                this.updateGuide('🔊 第一站到了，又上来了 2 人！现在一共多少人？');
+                this.addPassengers(state.p2.s1);
+                this.updateGuide(`🔊 第一站到了，又上来了 ${state.p2.s1} 人！现在一共多少人？`);
             }, 2000);
         },
 
@@ -318,28 +356,28 @@
         },
 
         handleP2Click: function(n) {
+            const step1Ans = state.p2.base + state.p2.s1;
             if (state.p2.currentStep === 0) {
-                // 3 + 2 = 5 ?
-                if (n === 5) {
-                    this.updateGuide('🔊 没错，3 + 2 = 5。过山车继续出发！');
+                if (n === step1Ans) {
+                    this.updateGuide(`🔊 没错，${state.p2.base} + ${state.p2.s1} = ${step1Ans}。过山车继续出发！`);
                     state.p2.currentStep = 1;
                     const car = document.getElementById('car');
                     setTimeout(() => {
                         car.style.left = '650px';
-                        this.addPassengers(4);
-                        this.updateGuide('🔊 第二站到了，上来了 4 人！最后车上一共多少人？');
+                        this.addPassengers(state.p2.s2);
+                        this.updateGuide(`🔊 第二站到了，上来了 ${state.p2.s2} 人！最后车上一共多少人？`);
                     }, 1500);
                 } else {
-                    this.triggerError('不对哦，3 + 2 应该是多少呢？');
+                    this.triggerError(`不对哦，${state.p2.base} + ${state.p2.s1} 应该是多少呢？`);
                 }
             } else if (state.p2.currentStep === 1) {
-                if (n === 9) {
-                    document.getElementById('chain-res').textContent = 9;
-                    this.updateGuide('🔊 太棒了！3 + 2 + 4 = 9。全部正确！');
+                if (n === state.p2.total) {
+                    document.getElementById('chain-res').textContent = state.p2.total;
+                    this.updateGuide(`🔊 太棒了！${state.p2.base} + ${state.p2.s1} + ${state.p2.s2} = ${state.p2.total}。全部正确！`);
                     if (window.GameManager) window.GameManager.updateMastery(state.levelData.knowledgePoint, 15);
                     setTimeout(() => this.finish(), 2000);
                 } else {
-                    this.triggerError('再数一数，5 加上新来的 4 人是多少？');
+                    this.triggerError(`再数一数，${step1Ans} 加上新来的 ${state.p2.s2} 人是多少？`);
                 }
             }
         },

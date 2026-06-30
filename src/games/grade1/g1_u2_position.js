@@ -142,8 +142,9 @@
                     padding: 18px 45px; font-size: 24px; font-weight: bold; margin: 10px;
                     border: none; border-radius: 20px; cursor: pointer; transition: 0.2s;
                 }
-                .btn-blue { background: #3b82f6; color: white; box-shadow: 0 6px 0 #1d4ed8; }
-                .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                 .btn-blue { background: #3b82f6; color: white; box-shadow: 0 6px 0 #1d4ed8; }
+                 .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                 .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #475569; }
             `;
             document.head.appendChild(style);
         },
@@ -197,8 +198,9 @@
                             <p style="font-size:22px; color:#64748b">你已经掌握了上下前后和左右！</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">奖励：💰 15</div>
                             <div class="btn-row" style="margin-top:30px">
+                                <button class="settlement-btn btn-green" id="btn-next">下一关</button>
                                 <button class="settlement-btn btn-blue" id="btn-again">再练一次</button>
-                                <button class="settlement-btn btn-green" id="btn-back">回大厅</button>
+                                <button class="settlement-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
                     </div>
@@ -208,6 +210,7 @@
             state.container.querySelectorAll('.action-btn').forEach(b => {
                 b.onclick = () => this.handleAction(b.dataset.v);
             });
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_3_1'; };
             document.getElementById('btn-again').onclick = () => { this.resetState(); this.renderLayout(); this.nextTask(); };
             document.getElementById('btn-back').onclick = () => { window.location.href = 'index.html'; };
         },

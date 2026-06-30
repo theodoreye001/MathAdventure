@@ -84,6 +84,114 @@
                     border-radius:20px;font-size:24px;font-weight:bold;color:#be185d;
                     cursor:pointer;transition:all 0.2s; }
                 .c1-opt-btn:hover { background:#be185d;color:white;transform:scale(1.05); }
+
+                @media (max-height: 720px) {
+                    .c1-wrapper > div:first-child {
+                        top: 10px !important;
+                        padding: 6px 20px !important;
+                        font-size: 16px !important;
+                    }
+                    .c1-wrapper > div:first-child span {
+                        font-size: 22px !important;
+                    }
+                    .c1-gem-slots {
+                        top: 75px !important;
+                        gap: 6px !important;
+                    }
+                    .c1-gem-slot {
+                        width: 36px !important;
+                        height: 44px !important;
+                        font-size: 16px !important;
+                        border-radius: 8px !important;
+                    }
+                    .c1-gem-slot.active {
+                        transform: translateY(-3px) scale(1.05) !important;
+                    }
+                    .c1-items {
+                        inset: 130px 10px 10px 10px !important;
+                        gap: 10px !important;
+                    }
+                    .c1-item-group {
+                        width: 120px !important;
+                        min-height: 80px !important;
+                        padding: 10px !important;
+                        border-radius: 12px !important;
+                        gap: 3px !important;
+                    }
+                    .c1-emoji {
+                        font-size: 22px !important;
+                    }
+                    .c1-bridge {
+                        inset: 75px 20px 15px 20px !important;
+                        gap: 15px !important;
+                    }
+                    .c1-bridge-visual {
+                        height: 240px !important;
+                        padding: 20px 50px !important;
+                        border-radius: 30px !important;
+                        border-width: 4px !important;
+                    }
+                    .c1-node {
+                        width: 45px !important;
+                        height: 45px !important;
+                        font-size: 24px !important;
+                        border-width: 2px !important;
+                    }
+                    .c1-question {
+                        margin-top: 10px !important;
+                        gap: 15px !important;
+                    }
+                    .c1-opt-btn {
+                        padding: 10px 25px !important;
+                        font-size: 18px !important;
+                        border-radius: 12px !important;
+                        border-width: 2px !important;
+                    }
+                }
+
+                @media (max-height: 600px) {
+                    .c1-wrapper > div:first-child {
+                        top: 5px !important;
+                        padding: 4px 15px !important;
+                        font-size: 14px !important;
+                    }
+                    .c1-gem-slots {
+                        top: 60px !important;
+                    }
+                    .c1-gem-slot {
+                        width: 30px !important;
+                        height: 36px !important;
+                        font-size: 14px !important;
+                    }
+                    .c1-items {
+                        inset: 105px 5px 5px 5px !important;
+                        gap: 8px !important;
+                    }
+                    .c1-item-group {
+                        width: 100px !important;
+                        min-height: 70px !important;
+                        padding: 8px !important;
+                    }
+                    .c1-emoji {
+                        font-size: 18px !important;
+                    }
+                    .c1-bridge {
+                        inset: 60px 10px 10px 10px !important;
+                    }
+                    .c1-bridge-visual {
+                        height: 190px !important;
+                        padding: 15px 40px !important;
+                    }
+                    .c1-node {
+                        width: 36px !important;
+                        height: 36px !important;
+                        font-size: 20px !important;
+                    }
+                    .c1-opt-btn {
+                        padding: 8px 20px !important;
+                        font-size: 16px !important;
+                    }
+                }
             `);
 
             state.phase = 1;

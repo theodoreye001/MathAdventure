@@ -250,7 +250,7 @@
 
         /* ─────────── Phase 1 逻辑 ─────────── */
         startPhase1() {
-            H.updateGuide('🔍 把下面的物品拖到正确的图形框里吧！');
+            H.updateGuide('🔍 拖动物品放入正确的位置，把下面的物品拖到正确的图形框里吧！');
         },
 
         bindDragEvents() {

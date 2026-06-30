@@ -154,7 +154,7 @@
                     '<ellipse cx="50" cy="15" rx="35" ry="12" fill="#93c5fd" stroke="#3b82f6" stroke-width="2"/>' +
                     '<rect x="15" y="15" width="70" height="80" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>' +
                     '<ellipse cx="50" cy="95" rx="35" ry="12" fill="#60a5fa" stroke="#3b82f6" stroke-width="2"/>' +
-                    '<text x="50" y="115" text-anchor="middle" font-size="11" fill="#3b82f6">圆柱</text>' +
+                    '<text x="50" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#2563eb">圆柱</text>' +
                 '</svg>' +
             '</div>';
     }
@@ -165,7 +165,7 @@
                 '<svg width="100" height="120" viewBox="0 0 100 120">' +
                     '<ellipse cx="50" cy="95" rx="35" ry="12" fill="#fca5a5" stroke="#ef4444" stroke-width="2"/>' +
                     '<polygon points="50,10 15,95 85,95" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>' +
-                    '<text x="50" y="115" text-anchor="middle" font-size="11" fill="#ef4444">圆锥</text>' +
+                    '<text x="50" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#dc2626">圆锥</text>' +
                 '</svg>' +
             '</div>';
     }

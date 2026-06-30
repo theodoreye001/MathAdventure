@@ -36,7 +36,7 @@
             var tickY = baseY - (i / 4) * chartH;
             var tickVal = Math.round((i / 4) * maxVal);
             svg += '<line x1="30" y1="' + tickY + '" x2="35" y2="' + tickY + '" stroke="#d1d5db" stroke-width="1"/>';
-            svg += '<text x="28" y="' + (tickY + 4) + '" text-anchor="end" font-size="10" fill="#9ca3af">' + tickVal + '</text>';
+            svg += '<text x="28" y="' + (tickY + 4) + '" text-anchor="end" font-size="12" font-weight="bold" fill="#64748b">' + tickVal + '</text>';
             svg += '<line x1="35" y1="' + tickY + '" x2="' + (chartW - 5) + '" y2="' + tickY + '" stroke="#f3f4f6" stroke-width="1"/>';
         }
 
@@ -45,8 +45,8 @@
             var barH = (values[j] / maxVal) * chartH;
             var y = baseY - barH;
             svg += '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + barH + '" rx="4" fill="' + COLORS[j % COLORS.length] + '" opacity="0.85"/>';
-            svg += '<text x="' + (x + barW / 2) + '" y="' + (y - 6) + '" text-anchor="middle" font-size="12" font-weight="bold" fill="#374151">' + values[j] + '</text>';
-            svg += '<text x="' + (x + barW / 2) + '" y="' + (baseY + 16) + '" text-anchor="middle" font-size="11" fill="#6b7280">' + labels[j] + '</text>';
+            svg += '<text x="' + (x + barW / 2) + '" y="' + (y - 6) + '" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e293b">' + values[j] + '</text>';
+            svg += '<text x="' + (x + barW / 2) + '" y="' + (baseY + 18) + '" text-anchor="middle" font-size="13" font-weight="bold" fill="#475569">' + labels[j] + '</text>';
         }
 
         svg += '</svg>';

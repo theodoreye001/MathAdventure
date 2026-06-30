@@ -121,11 +121,11 @@
                     '<rect x="70" y="20" width="60" height="12" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1"/>' +
                     '<rect x="130" y="20" width="60" height="12" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1"/>' +
                     '<rect x="190" y="20" width="60" height="12" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1"/>' +
-                    '<text x="10" y="44" font-size="10" fill="#1e40af">0</text>' +
-                    '<text x="70" y="44" font-size="10" fill="#1e40af">50km</text>' +
-                    '<text x="130" y="44" font-size="10" fill="#1e40af">100km</text>' +
-                    '<text x="190" y="44" font-size="10" fill="#1e40af">150km</text>' +
-                    '<text x="250" y="44" font-size="10" fill="#1e40af">200km</text>' +
+                    '<text x="10" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e40af">0</text>' +
+                    '<text x="70" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e40af">50km</text>' +
+                    '<text x="130" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e40af">100km</text>' +
+                    '<text x="190" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e40af">150km</text>' +
+                    '<text x="250" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="#1e40af">200km</text>' +
                 '</svg>' +
             '</div>';
     }

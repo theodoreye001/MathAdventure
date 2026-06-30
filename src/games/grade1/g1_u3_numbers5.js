@@ -149,6 +149,7 @@
                     transition: all 0.2s; box-shadow: 0 6px 0 #047857;
                 }
                 .btn-green { background: #10b981; color: white; }
+                .btn-blue { background: #3b82f6; color: white; box-shadow: 0 6px 0 #1d4ed8; }
                 .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #334155; }
             `;
             document.head.appendChild(style);
@@ -195,7 +196,8 @@
                             <p style="font-size: 20px; color: #475569;">你已经掌握了 5 以内的加减逻辑和 0 的意义。</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">奖励：💰 20</div>
                             <div class="btn-row">
-                                <button class="ui-btn btn-green" id="btn-again">再练一次</button>
+                                <button class="ui-btn btn-green" id="btn-next">下一关</button>
+                                <button class="ui-btn btn-blue" id="btn-again">再练一次</button>
                                 <button class="ui-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
@@ -215,6 +217,7 @@
                 t.ondragstart = e => e.dataTransfer.setData('text', t.dataset.s);
             });
 
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_4_1'; };
             document.getElementById('btn-again').onclick = () => {
                 this.resetState();
                 this.renderLayout();
@@ -277,7 +280,7 @@
 
             document.getElementById('n-left').textContent = l;
             document.getElementById('n-right').textContent = r;
-            this.updateGuide(`🔊 比大小：${l} 和 ${r}，谁更大？拖动符号试试！`);
+            this.updateGuide(`🔊 比较大小：拖动符号放入正确的位置，判断 ${l} 和 ${r} 的大小！`);
         },
 
         handleDrop: function (e) {

@@ -72,6 +72,7 @@ window.GameHelpers = (function () {
                 transition: all 0.2s;
             }
             .gh-btn:hover { transform: scale(1.05); }
+            .gh-btn-next { background: #3b82f6; color: white; }
             .gh-btn-primary { background: #10b981; color: white; }
             .gh-btn-secondary { background: #64748b; color: white; }
             .gh-tooltip {
@@ -193,6 +194,21 @@ window.GameHelpers = (function () {
 
         const overlay = document.createElement('div');
         overlay.className = 'gh-settlement';
+        
+        let btnGroupHtml = '';
+        if (nextId) {
+            btnGroupHtml = `
+                <button class="gh-btn gh-btn-next" id="gh-btn-next">下一关</button>
+                <button class="gh-btn gh-btn-primary" id="gh-btn-restart">再玩一次</button>
+                <button class="gh-btn gh-btn-secondary" id="gh-btn-exit">返回地图</button>
+            `;
+        } else {
+            btnGroupHtml = `
+                <button class="gh-btn gh-btn-primary" id="gh-btn-restart">再玩一次</button>
+                <button class="gh-btn gh-btn-secondary" id="gh-btn-exit">返回地图</button>
+            `;
+        }
+
         overlay.innerHTML = `
             <div class="gh-result-card">
                 <div style="font-size:70px;">🌈</div>
@@ -203,8 +219,7 @@ window.GameHelpers = (function () {
                     奖励：💰 ${reward || 10}
                 </div>
                 <div class="gh-btn-group">
-                    <button class="gh-btn gh-btn-primary" id="gh-btn-restart">再玩一次</button>
-                    <button class="gh-btn gh-btn-secondary" id="gh-btn-exit">返回地图</button>
+                    ${btnGroupHtml}
                 </div>
             </div>
         `;
@@ -212,6 +227,9 @@ window.GameHelpers = (function () {
 
         overlay.querySelector('#gh-btn-restart').onclick = () => overlay.remove();
         overlay.querySelector('#gh-btn-exit').onclick = () => { window.location.href = 'index.html'; };
+        if (nextId) {
+            overlay.querySelector('#gh-btn-next').onclick = () => { window.location.href = 'game.html?id=' + nextId; };
+        }
 
         return overlay;
     }

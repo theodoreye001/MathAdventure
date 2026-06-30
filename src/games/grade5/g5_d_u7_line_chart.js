@@ -959,7 +959,7 @@
 
             /* Y 轴标签 */
             '.lch-ylabel{' +
-                'position:absolute;font-size:10px;color:#6b7280;' +
+                'position:absolute;font-size:12px;font-weight:bold;color:#475569;' +
                 'width:40px;text-align:right;right:calc(100% + 4px);' +
                 'transform:none;white-space:nowrap;' +
             '}' +
@@ -972,7 +972,7 @@
 
             /* X 轴标签 */
             '.lch-xlabel{' +
-                'position:absolute;font-size:10px;color:#6b7280;' +
+                'position:absolute;font-size:12px;font-weight:bold;color:#475569;' +
                 'top:calc(100% - 2px);text-align:center;' +
                 'width:36px;white-space:nowrap;' +
             '}' +
@@ -994,9 +994,9 @@
 
             /* 数值标签 */
             '.lch-val{' +
-                'position:absolute;font-size:10px;font-weight:bold;' +
+                'position:absolute;font-size:12px;font-weight:bold;' +
                 'color:#4338ca;white-space:nowrap;z-index:4;' +
-                'pointer-events:none;' +
+                'pointer-events:none;width:32px;text-align:center;' +
             '}' +
 
             /* SVG 连线 */

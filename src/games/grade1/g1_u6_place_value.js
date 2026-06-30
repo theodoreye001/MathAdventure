@@ -66,16 +66,24 @@
                 .pearl-pool {
                     width: 80%; display: flex; flex-wrap: wrap; gap: 20px;
                     justify-content: center; padding: 30px;
-                    background: rgba(255,255,255,0.4); border-radius: 30px;
-                    border: 4px dashed #7dd3fc;
+                    background: rgba(255,255,255,0.7); border-radius: 30px;
+                    border: 4px dashed #0ea5e9;
                 }
                 .pearl {
-                    width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, #fff, #e2e8f0);
-                    border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                    width: 60px; height: 60px;
+                    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fbcfe8 25%, #ec4899 70%, #be185d 100%);
+                    border-radius: 50%;
+                    box-shadow: 0 6px 12px rgba(190, 24, 93, 0.3), inset 0 -4px 8px rgba(0,0,0,0.2);
                     cursor: pointer; transition: all 0.2s; position: relative;
                     display: flex; align-items: center; justify-content: center;
+                    border: 2px solid #db2777;
                 }
-                .pearl.selected { border: 4px solid #0ea5e9; transform: scale(1.1); background: #bae6fd; }
+                .pearl.selected {
+                    border: 4px solid #0ea5e9;
+                    transform: scale(1.15);
+                    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e0f2fe 30%, #38bdf8 70%, #0369a1 100%);
+                    box-shadow: 0 8px 16px rgba(14, 165, 233, 0.4);
+                }
                 .pearl.bundled { animation: bundleMove 1s forwards; pointer-events: none; }
 
                 @keyframes bundleMove {
@@ -143,6 +151,7 @@
                 }
                 .btn-blue { background: #0ea5e9; color: white; box-shadow: 0 6px 0 #0284c7; }
                 .btn-green { background: #10b981; color: white; box-shadow: 0 6px 0 #047857; }
+                .btn-gray { background: #64748b; color: white; box-shadow: 0 6px 0 #475569; }
             `;
             document.head.appendChild(style);
         },
@@ -213,8 +222,9 @@
                             <p style="font-size:20px; color:#475569;">你已经掌握了 11-20 数位的秘密。</p>
                             <div style="margin-top:20px; font-weight:bold; color:#fbbf24; font-size:28px;">奖励：💰 30</div>
                             <div class="btn-row">
+                                <button class="ui-btn btn-green" id="btn-next">下一关</button>
                                 <button class="ui-btn btn-blue" id="btn-again">再玩一次</button>
-                                <button class="ui-btn btn-green" id="btn-back">回大厅</button>
+                                <button class="ui-btn btn-gray" id="btn-back">回大厅</button>
                             </div>
                         </div>
                     </div>
@@ -248,6 +258,7 @@
                 btn.onclick = () => this.handleCompare(btn.dataset.s);
             });
 
+            document.getElementById('btn-next').onclick = () => { window.location.href = 'game.html?id=lvl_1_7_1'; };
             document.getElementById('btn-again').onclick = () => { this.resetState(); this.renderLayout(); this.startPhase1(); };
             document.getElementById('btn-back').onclick = () => { window.location.href = 'index.html'; };
         },

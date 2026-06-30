@@ -95,13 +95,44 @@
       border-left: 8px solid var(--accent-color);
     }
     .world-container { margin-left: 20px; padding-left: 20px; border-left: 4px dashed #cbd5e1; }
-    .world-title { font-size: 1.4rem; color: var(--secondary-color); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .unit-section { margin-bottom: 40px; }
-    .unit-title { font-size: 1.1rem; color: var(--text-muted); margin: 20px 0 15px 0; display: flex; align-items: center; }
+    .world-section { margin-bottom: 80px; }
+    .world-section:last-child { margin-bottom: 20px; }
+    .world-title { font-size: 1.45rem; color: var(--secondary-color); display: flex; align-items: center; gap: 12px; margin-top: 10px; margin-bottom: 25px; }
+    .unit-section {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .unit-title { font-size: 1.1rem; color: var(--text-muted); margin: 10px 0 18px 0; display: flex; align-items: center; }
     .unit-title::before { content: "⭐"; margin-right: 8px; }
 
-    /* 关卡卡片增强：增加图标占位符 */
-    .levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+    /* 单元网格排布：每行放置三个 */
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    @media (max-width: 992px) {
+      .units-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .units-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 每个单元内的关卡列表 */
+    .levels-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      flex: 1;
+    }
     .level-card {
       background: var(--card-bg);
       border-radius: var(--radius-md);
@@ -113,6 +144,7 @@
       flex-direction: column;
       border: 3px solid transparent;
       overflow: hidden;
+      flex: 1;
     }
     .level-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1); }
     .level-card.unlocked { border-color: #dcfce7; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
@@ -184,10 +216,11 @@
     <header>
       <h1 id="game-title">数学大冒险 <span class="version-tag" id="game-version">v1.0.0</span></h1>
       <button class="debug-btn" onclick="debugUnlockAll()">🛠️ 【调试】一键解锁所有关卡</button>
-      <nav id="grade-nav" class="grade-nav">
-        <a href="dashboard.html" class="nav-btn">📊 家长控制台</a>
-      </nav>
     </header>
+
+    <nav id="grade-nav" class="grade-nav">
+      <a href="dashboard.html" class="nav-btn">📊 家长控制台</a>
+    </nav>
 
     <div id="loading">✨ 正在召唤数字精灵...</div>
     <div id="error-message">哎呀，地图数据走丢了，请确保使用 Live Server 打开哦！</div>
@@ -246,7 +279,11 @@
             if (!world.units.some(u => u.levels.length > 0)) return;
 
             const worldEl = document.createElement('div');
+            worldEl.className = 'world-section';
             worldEl.innerHTML = `<h3 class="world-title">🌍 ${world.worldTitle} (${world.term})</h3>`;
+
+            const unitsGrid = document.createElement('div');
+            unitsGrid.className = 'units-grid';
 
             world.units.forEach(unit => {
               if (!unit.levels || unit.levels.length === 0) return;
@@ -277,8 +314,12 @@
                 
                 card.innerHTML = `
                   <div class="level-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 5v14M5 12h14" />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="6" y1="12" x2="10" y2="12"></line>
+                      <line x1="8" y1="10" x2="8" y2="14"></line>
+                      <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                      <line x1="18" y1="11" x2="18.01" y2="11"></line>
+                      <rect x="2" y="6" width="20" height="12" rx="3"></rect>
                     </svg>
                   </div>
                   <div class="level-name">${level.levelName}</div>
@@ -300,8 +341,9 @@
               });
 
               unitSection.appendChild(grid);
-              worldEl.appendChild(unitSection);
+              unitsGrid.appendChild(unitSection);
             });
+            worldEl.appendChild(unitsGrid);
             worldContainer.appendChild(worldEl);
           });
 

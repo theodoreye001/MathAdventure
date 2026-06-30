@@ -424,12 +424,17 @@
                     <div class="result-title">🌟 闯关成功！</div>
                     <div class="reward-text">获得奖励：${this.levelData.reward} 金币</div>
                     <div class="orchard-controls">
+                        <button class="orchard-btn" style="background:#409eff;color:white;" id="btn-next-level">下一关</button>
                         <button class="orchard-btn" style="background:#67c23a;color:white;" id="btn-next">再种一丛</button>
                         <button class="orchard-btn btn-reset" id="btn-home">返回大厅</button>
                     </div>
                 </div>
             `;
             this.container.querySelector('#modal-container').appendChild(modal);
+
+            modal.querySelector('#btn-next-level').onclick = () => {
+                location.href = 'game.html?id=lvl_2_5_1';
+            };
 
             modal.querySelector('#btn-next').onclick = () => {
                 modal.remove();
